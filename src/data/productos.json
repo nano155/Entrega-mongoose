@@ -1,0 +1,57 @@
+[
+  {
+    "id": "57f04f8a-0192-4412-b501-775472a3993a",
+    "title": "Audífonos Bluetooth Inalámbricos",
+    "description": "Disfruta de tu música sin cables con estos audífonos Bluetooth. Son cómodos, ligeros y ofrecen una excelente calidad de sonido.",
+    "code": "AB-5432",
+    "price": 39.99,
+    "status": true,
+    "stock": 50,
+    "category": "Electrónica",
+    "thumbnails": []
+  },
+  {
+    "id": "2e94955a-8f59-441d-9483-a2742a8b259a",
+    "title": "Smartwatch Deportivo",
+    "description": "Monitorea tu actividad física y recibe notificaciones en tu muñeca con este smartwatch deportivo.",
+    "code": "SW-8765",
+    "price": 129.99,
+    "status": true,
+    "stock": 20,
+    "category": "Electrónica",
+    "thumbnails": []
+  },
+  {
+    "id": "34c12345-6789-0123-4567-890123456789",
+    "title": "Cámara Digital",
+    "description": "Captura momentos increíbles con esta cámara digital de alta resolución.",
+    "code": "CD-1000",
+    "price": 249.99,
+    "status": true,
+    "stock": 15,
+    "category": "Electrónica",
+    "thumbnails": []
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "title": "Televisor LED Smart TV",
+    "description": "Disfruta de tus películas y series favoritas en alta definición con este televisor LED Smart TV.",
+    "code": "TV-554K",
+    "price": 499.99,
+    "status": true,
+    "stock": 3,
+    "category": "Electrónica",
+    "thumbnails": []
+  },
+  {
+    "id": "98765432-1098-7654-3210-987654321098",
+    "title": "Laptop Gamer",
+    "description": "Disfruta de los juegos más exigentes con este laptop gamer de alto rendimiento.",
+    "code": "LG-7890",
+    "price": 999.99,
+    "status": true,
+    "stock": 1,
+    "category": "Electrónica",
+    "thumbnails": []
+  }
+]
