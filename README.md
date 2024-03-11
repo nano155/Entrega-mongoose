@@ -14,7 +14,6 @@ Ejemplo:
 Node.js
 NPM
 
-r
 Copy code
 
 ### Instalación
@@ -34,7 +33,6 @@ Cómo iniciar el proyecto.
 
 npm run dev
 
-r
 Copy code
 
 ## Uso
@@ -99,4 +97,4 @@ api/products: Ruta para administrar productos.
 api/carts: Ruta para administrar carritos de compra.
 api/messages: Ruta para administrar mensajes de chat.
 Autores
-Lista de autores o contribuyentes al proyecto.
+Urbano Molina Molina
