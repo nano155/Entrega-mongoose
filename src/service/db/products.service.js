@@ -26,14 +26,23 @@ export class ProductsService {
                     }
                 }
                 if (objeto.sort === 'asc' || objeto.sort === 'desc') {
-                    const products = await productModel.paginate(matchQuery, {limit:objeto.limit, page:objeto.page, sort:{price:(objeto.sort === 'asc' || objeto.sort === 'desc') ? (objeto.sort === 'asc') ? 1 : -1 : null}, lean:true})
-                    return products
+                    const productos = await productModel.paginate(matchQuery, {limit:objeto.limit, page:objeto.page, sort:{price:(objeto.sort === 'asc' || objeto.sort === 'desc') ? (objeto.sort === 'asc') ? 1 : -1 : null}, lean:true})
+                    productos.prevLink = productos.hasPrevPage?`http://localhost:8080/views/products?page=${productos.prevPage}`:''
+                    productos.nextLink = productos.hasNextPage?`http://localhost:8080/views/products?page=${productos.nextPage}`:''
+                    productos.isValid = !(objeto.page < 1 || objeto.page > productos.totalPages)
+                    return productos
                 }   
-                const products = await productModel.paginate(matchQuery, {limit:objeto.limit, page:objeto.page, lean:true})
-                return products
+                const productos = await productModel.paginate(matchQuery, {limit:objeto.limit, page:objeto.page, lean:true})
+                productos.prevLink = productos.hasPrevPage?`http://localhost:8080/views/products?page=${productos.prevPage}`:''
+                productos.nextLink = productos.hasNextPage?`http://localhost:8080/views/products?page=${productos.nextPage}`:''
+                productos.isValid = !(objeto.page < 1 || objeto.page > productos.totalPages)
+                return productos
             }      
-            const products = await productModel.paginate({},{limit:objeto.limit, page:objeto.page, lean:true})
-            return products
+            const productos = await productModel.paginate({},{limit:objeto.limit, page:objeto.page, lean:true})
+            productos.prevLink = productos.hasPrevPage?`http://localhost:8080/views/products?page=${productos.prevPage}`:''
+            productos.nextLink = productos.hasNextPage?`http://localhost:8080/views/products?page=${productos.nextPage}`:''
+            productos.isValid = !(objeto.page < 1 || objeto.page > productos.totalPages)
+            return productos
         } catch (error) {
             throw error
         }

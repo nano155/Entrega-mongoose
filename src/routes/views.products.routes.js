@@ -17,9 +17,6 @@ router.get('/products', async (req, res)=>{
         }    
         let productos = await products.getProducts(objeto)
         console.log(productos);
-        productos.prevLink = productos.hasPrevPage?`http://localhost:8080/views/products?page=${productos.prevPage}`:''
-        productos.nextLink = productos.hasNextPage?`http://localhost:8080/views/products?page=${productos.nextPage}`:''
-        productos.isValid = !(objeto.page < 1 || objeto.page > productos.totalPages)
         res.render("views.products.hbs", productos)
     } catch (error) {
 
@@ -38,7 +35,6 @@ router.get('/carts/:cid', async (req, res)=>{
         try {
                 const cid = req.params.cid
                 const cart = await carts.getCartById(cid)
-                console.log(cart.products);
                 res.render('views.cart.hbs', cart)
         } catch (error) {
                 res.status(400).send({ error })
