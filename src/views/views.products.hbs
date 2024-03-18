@@ -1,0 +1,59 @@
+{{#if isValid}}
+   
+
+<section class="grid-products">
+<h1>Mi Tiendita Virtual</h1>
+    <ul>
+{{#each docs}}
+<li class="card">
+    <div id="id-producto" data-id={{this._id}}>
+<div class="card-image">
+</div>
+    <h3>
+        {{this.title}}
+    </h3>
+    <div>
+    <p>
+        precio: {{this.precio}}
+    </p>
+    <p>
+        stock: {{this.stock}}
+    </p>
+    </div>
+    <h4>category: {{this.category}}</h4>
+    <a href="http://localhost:8080/views/products/{{this._id}}"><button>Details</button></a>
+    </div>
+</li>   
+{{/each}}
+    </ul>
+    <aside class="buttons">
+        {{#if hasPrevPage}}
+        <a href="http://localhost:8080/views/products?page=1">first Page</a>
+        <a href="{{this.prevLink}}"> 
+            << prev page
+        </a>
+        {{else}}
+           <a href=""> 
+            << not prev page
+        </a>
+        {{/if}}
+        &nbsp;
+        {{this.page}}
+        &nbsp;
+        {{#if hasNextPage}}
+        <a href="{{this.nextLink}}"> 
+             Next page >>
+        </a>
+        <a href="http://localhost:8080/views/products?page={{this.totalPages}}">
+            Last page
+        </a>
+        {{else}}
+           <a href=""> 
+             not Next page >>
+        </a>
+        {{/if}}
+    </aside>
+</section>
+{{else}}
+   <h1>No hay productos en esta pagina</h1>
+{{/if}}

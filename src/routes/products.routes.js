@@ -10,7 +10,13 @@ const router = Router()
 
 router.get('/', async (req, res) => {
     try {
-        const productos = await products.getProducts()
+        const objeto = {
+            sort:req.query.sort, 
+            filter:req.query.filter, 
+            page:(req.query.page)?+req.query.page:1, 
+            limit:(req.query.limit)?+req.query.limit:10
+        }
+        const productos = await products.getProducts(objeto)
         res.send({message:'Listado de productos', payload: productos})
     } catch (error) {
         res.status(400).send(error)

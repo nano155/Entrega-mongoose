@@ -96,5 +96,8 @@ Las rutas disponibles en el proyecto.
 api/products: Ruta para administrar productos.
 api/carts: Ruta para administrar carritos de compra.
 api/messages: Ruta para administrar mensajes de chat.
+views/products
+views/products/:pid
+views/carts/:cid
 Autores
 Urbano Molina Molina

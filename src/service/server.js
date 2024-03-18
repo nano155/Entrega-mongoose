@@ -1,8 +1,9 @@
 import express from "express";
 import __dirname from "../utils.js";
-import { engine } from "express-handlebars";
+import {create} from "express-handlebars";
 import { Server as server } from 'socket.io'
 import { MessageService } from "./db/messages.service.js";
+
 
 
 export class Server {
@@ -12,14 +13,16 @@ export class Server {
     #productsRouter;
     #cartsRouter;
     #messageRouter;
+    #viewsProductsRouter;
 
     constructor(options) {
-        const { port, publicPath, productsRouter, cartsRouter, messageRouter } = options
+        const { port, publicPath, productsRouter, cartsRouter, messageRouter, viewsProductsRouter } = options
         this.#port = port
         this.#publicPath = publicPath
         this.#productsRouter = productsRouter
         this.#cartsRouter = cartsRouter
         this.#messageRouter = messageRouter
+        this.#viewsProductsRouter = viewsProductsRouter
     }
 
 
@@ -29,8 +32,15 @@ export class Server {
 
         this.#app.use(express.static(__dirname + this.#publicPath))
 
+        const hbs = create({
+            extname: '.hbs',
+            runtimeOptions: {
+              allowProtoPropertiesByDefault: true,
+              allowProtoMethodsByDefault: true
+            }
+          });
 
-        this.#app.engine('.hbs', engine({ extname: '.hbs' }));
+        this.#app.engine('.hbs', hbs.engine);
 
         this.#app.set('views', (__dirname + '/views'));
         this.#app.set('view engine', 'hbs');
@@ -40,6 +50,7 @@ export class Server {
         this.#app.use('/api/products', this.#productsRouter)
         this.#app.use('/api/carts', this.#cartsRouter)
         this.#app.use('/api/message', this.#messageRouter)
+        this.#app.use('/views', this.#viewsProductsRouter)
 
         const httpServer = this.#app.listen(this.#port, () => {
             console.log(`listen port ${this.#port}`);

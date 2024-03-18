@@ -1,0 +1,25 @@
+<section class="grid-cart">
+<h1>Cart:  {{_id}}</h1>
+<ul class="list-card">
+{{#each products}}
+<li class="card">
+    <div id="id-producto" data-id={{this._id}}>
+<div class="card-image">
+</div>
+    <h3>
+        {{this.product.title}}
+    </h3>
+    <div>
+    <p>
+        precio: {{this.product.price}}
+    </p>
+    <p>
+        stock: {{this.product.stock}}
+    </p>
+    </div>
+    <h4>category: {{this.product.category}}</h4>
+    </div>
+</li>   
+{{/each}}
+</ul>
+</section>

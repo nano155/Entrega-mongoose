@@ -3,10 +3,13 @@ import productRouter from "./routes/products.routes.js"
 import messageRouter from './routes/messages.routes.js'
 import { Server } from "./service/server.js"
 import mongoose from 'mongoose'
+import viewsProductsRouter from "./routes/views.products.routes.js"
 
 (() => {
     main()
 })()
+
+
 function main() {
     const connectMongoDB = async () => {
         try {
@@ -20,11 +23,13 @@ function main() {
           }     
     };
     const server = new Server({
-        port: 3000,
+        port: 8080,
         publicPath: '/public',
         productsRouter: productRouter,
         cartsRouter: cartsRouter,
         messageRouter:messageRouter,
+        viewsProductsRouter:viewsProductsRouter
+
     })
     server.start()
     connectMongoDB();
